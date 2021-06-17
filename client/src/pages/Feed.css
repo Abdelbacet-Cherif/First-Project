@@ -1,0 +1,100 @@
+.multer {
+  /* display: grid !important; 
+    grid-template-columns: auto auto auto !important;
+    
+    padding: 10px !important; */
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 20px;
+}
+.rossi {
+  width: 100%;
+}
+
+.color {
+  background-color: RGB(239, 239, 239);
+  margin: auto;
+  width: 70%;
+}
+.espace {
+  margin-top: 4%;
+}
+.obligation {
+  cursor: pointer;
+  font-weight: 600;
+  margin: 20px auto;
+  width: 70%;
+}
+.create {
+  font-family: "Dancing Script", cursive;
+  font-weight: 600;
+  font-size: 27px;
+  margin: 0 0 15px;
+}
+.btn-secondary {
+  background-color: #fe490c;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  outline: none;
+  margin-top: 15px;
+}
+.btn-secondary:hover {
+  background-color: #19dbe0 ;
+}
+.log {
+  margin-top: 10px;
+}
+.form {
+  margin-top: 10px;
+}
+.no-gutters {
+  padding: 10px 30px;
+}
+.center {
+  width: 70%;
+  margin: auto;
+}
+@media (min-width: 960px) {
+  .col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .login {
+    margin-bottom: 40px;
+  }
+  .input {
+    width: 100%;
+  }
+}
+.label {
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.input {
+  width: 80%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+.input1{
+  width: 80%;
+  /* padding: 6px 12px; */
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+
+}
+.espace {
+  margin-top: 2%;
+}

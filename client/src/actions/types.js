@@ -8,8 +8,8 @@ export const LOAD_USER_SUCCESS = "LOAD_USER_SUCCESS";
 export const LOAD_USER_FAIL = "LOAD_USER_FAIL";
 
 export const LOGOUT = "LOGOUT";
-//////////////////////////////////// 
+////////////////////////////////////
 
-
-
-
+//Categorie types:
+export const GET_CATEGORIE_SUCCESS = "GET_CATEGORIE_SUCCESS";
+export const GET_CATEGORIE_FAIL = "GET_CATEGORIE_FAIL";

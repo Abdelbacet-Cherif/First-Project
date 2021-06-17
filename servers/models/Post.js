@@ -5,14 +5,20 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "user",
   },
+  category: {
+    type: mongoose.Types.ObjectId,
+    ref: "category",
+  },
   title: String,
   gender: String,
+  image: [String],
   city: String,
   price: String,
+  description: String,
   created_at: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
 
 const Post = mongoose.model("post", PostSchema);

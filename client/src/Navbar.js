@@ -56,18 +56,17 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <img className="imglog" src="/images/logo-dog.png"></img>
-            Pets Parc<i class="fas fa-typo3"></i>
+            PetStore<i class="fas fa-typo3"></i>
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
-            {/* <GiHamburgerMenu className="gi" /> */}
-            <label for="check">
+            <GiHamburgerMenu className="gi" />
+            {/* <label for="check">
               <input type="checkbox" className="check" />
               <span></span>
               <span></span>
               <span></span>
-            </label>
+            </label> */}
           </div>
 
           {auth.isAuth ? (
@@ -75,7 +74,7 @@ const Navbar = () => {
               <ul className={click ? "nav-menu active" : "nav-menu"}>
                 <li className="nav-item">
                   <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                    HOME
+                    Accueil
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -84,17 +83,28 @@ const Navbar = () => {
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
-                    PROFILE
+                    Profile
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
+                    to="/feed"
                     className="nav-links"
+                    onClick={closeMobileMenu}
+                  >
+                    Déposer une annonce
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Button>
+                  <Link
+                    className="nav-links1"
                     onClick={closeMobileMenu}
                     onClick={() => dispatch(logoutUser())}
                   >
                     LOG OUT
                   </Link>
+                  </Button>
                 </li>
               </ul>
             </div>
@@ -103,7 +113,7 @@ const Navbar = () => {
               <ul className={click ? "nav-menu active" : "nav-menu"}>
                 <li className="nav-item">
                   <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                    HOME
+                  Accueil
                   </Link>
                 </li>
                 {
@@ -122,7 +132,7 @@ const Navbar = () => {
                   <Link to="/register" onClick={closeMobileMenu}>
                     {
                       <Button className="btn" buttonStyle="btn--outline">
-                        POST NEW AD
+                        Déposer une annonce
                       </Button>
                     }
                   </Link>

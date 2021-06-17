@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { loginUser } from "../actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import "./Register.css";
 
 const Login = ({ history }) => {
   const [info, setInfo] = useState({
@@ -49,39 +50,49 @@ const Login = ({ history }) => {
     //   {errors && errors.map((el) => <h1>{el.msg}</h1>)}
     //   <button type="submit">Login</button>
     // </form>
-    <div>
-      <div className="col-md-6 no-gutters">
-        <Form
-          className="leftside justify-content-center align-items-center  left "
-          onSubmit={login}
-        >
-          <div className="log">
-            <h4 className="create">Login to your account</h4>
-            <Form>Email</Form>
-            <Form.Control
-              onFocus={() => setErrors(null)}
-              placeholder="Enter email"
-              type="search"
-              type="text"
-              name="email"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="log">
-            <Form className="pass">Password</Form>
-            <Form.Control
-              placeholder="Password"
-              type="search"
-              type="password"
-              name="password"
-              onChange={handleChange}
-            />
-          </div>
-          {errors && errors.map((el) => <h1>{el.msg}</h1>)}
-          <button className="button" type="submit">
-            Login
-          </button>
-        </Form>
+    <div className="color espace">
+      {" "}
+      <div className="row no-gutters">         
+
+        <div className="col-md-6 no-gutters">
+          {" "}
+          <Form
+            className=" inline leftside justify-content-center align-items-center  left login  flexdis "
+            onSubmit={login}
+          >
+            <div className="log">
+              <h4 className="create">Je me connecte</h4>
+              <Form className="label">Adresse e-mail *</Form>
+              <Form.Control
+                className="input"
+                onFocus={() => setErrors(null)}
+                type="search"
+                type="text"
+                name="email"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="log">
+              <Form className="label">Votre mot de passe *</Form>
+              <Form.Control
+                className="input"
+                type="search"
+                type="password"
+                name="password"
+                onChange={handleChange}
+              />
+            </div>
+            {errors &&
+              (typeof errors === "string" ? (
+                <h1>{errors}</h1>
+              ) : (
+                errors.map((el) => <h1>{el.msg}</h1>)
+              ))}
+            <Button className="btn btn-md btn-secondary buttonmedia" type="submit">
+              CONNEXION
+            </Button>
+          </Form>
+        </div> <img src="./images/login-image.jpg" className="displayim" />
       </div>
     </div>
   );
