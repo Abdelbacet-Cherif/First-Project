@@ -25,6 +25,18 @@ const updateAllProducts = async (req, res) => {
   }
 };
 
+const deleteProduct = async (req, res) => {
+  console.log(req.params);
+  try {
+    await Post.findByIdAndDelete(req.params.id);
+    const products = await Post.find({});
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
 // const addproduct = async (req,res)=>{
 //     try {
 //         const newProduct = new Product(req.body)
@@ -49,4 +61,5 @@ const updateAllProducts = async (req, res) => {
 module.exports = {
   getAllProducts,
   updateAllProducts,
+  deleteProduct,
 };

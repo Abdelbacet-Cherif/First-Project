@@ -10,7 +10,7 @@ import {
 
 let initState = {
   token: localStorage.getItem("token"),
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   isAuth: localStorage.getItem("isAuth") === "true" ? true : false,
   error: null,
 };
@@ -18,6 +18,7 @@ let initState = {
 const AuthReducer = (state = initState, action) => {
   switch (action.type) {
     case LOAD_USER_SUCCESS:
+      localStorage.setItem("user", JSON.stringify(action.payload));
       return {
         ...state,
         user: action.payload,

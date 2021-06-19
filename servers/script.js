@@ -8,8 +8,8 @@ const Category = require("./models/category");
 connectDB();
 const importData = async () => {
   try {
-    await Post.deleteMany({});
-    await Post.insertMany(products);
+    /* await Post.deleteMany({});
+    await Post.insertMany(products); */
 
     await Category.deleteMany({});
     await Category.insertMany(collections);

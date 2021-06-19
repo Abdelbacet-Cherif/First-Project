@@ -25,7 +25,7 @@ import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
 import FeedCard from "./HomeCard";
 import { createProduct } from "../actions/productActions";
 import "./Feed.css";
-const Feed = () => {
+const Feed = ({ history }) => {
   const [data, setData] = useState({
     title: "",
     price: "",
@@ -42,7 +42,9 @@ const Feed = () => {
     dispatch(loadUser());
     dispatch(getAllCategorie());
   }, []);
-
+  useEffect(() => {
+    if (auth.isAuth === false) history.push("/");
+  }, [auth.isAuth]);
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -57,10 +59,11 @@ const Feed = () => {
     const keys = Object.keys(data);
     let filesArray = Object.values(data.image);
     // formData.append("image", filesArray);
-    filesArray.map((file) => formData.append('image', file));
+    filesArray.map((file) => formData.append("image", file));
     keys.map((el) => formData.append(el, data[el]));
 
     dispatch(createProduct(formData));
+    history.push("/profile");
   };
 
   return (
@@ -88,6 +91,8 @@ const Feed = () => {
             className="input1"
             controlId="exampleForm.ControlTextarea1"
           >
+          <label className="label">Télephone *</label>
+             <FormControl className="input" name="phone" onChange={handleChange} />
             <Form.Label className="label">Texte de votre annonce *</Form.Label>
             <Form.Control
               as="textarea"

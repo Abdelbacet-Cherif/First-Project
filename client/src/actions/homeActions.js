@@ -4,7 +4,7 @@ import axios from "axios";
 export const getCollections = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_COLLECTIONS_REQUEST });
-    const { data } = await axios.get("/collection");
+    const { data } = await axios.get("/category");
 
     dispatch({
       type: actionTypes.GET_COLLECTIONS_SUCCESS,

@@ -4,30 +4,38 @@ import { Modal, Button, Carousel } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { update } from "../actions/productActions";
-const CategoryPetsComponent = ({ el }) => {
-  const auth = useSelector((state) => state.auth);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [show, setShow] = useState(false);
+import { deletes, update } from "../actions/productActions";
+const CategoryPetsComponent = ({ el, catId }) => {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+  const [show, setShow] = useState(false);
   const [input, setinput] = useState({
     title: el.title,
     gender: el.gender,
     city: el.city,
     price: el.price,
     description: el.description,
-    phone: el.owner.phone,
+    phone: el.phone,
     image: el.image,
   });
+
+  const [index, setIndex] = useState(0);
+
+  //functions ============
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const handleChange = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value });
   };
-  const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
+
+  const handleDelete = () => {
+    dispatch(deletes(el._id, catId));
+  };
+
   return (
     <div>
       <div style={{ width: "150px", heigth: "150px" }}>
@@ -66,13 +74,19 @@ const CategoryPetsComponent = ({ el }) => {
         </p>
         <span>
           <strong>Téléphone: </strong>
-          {el.owner.phone}
+          {el.phone}
         </span>
         {/* modal */}
-        {auth.user._id === el.owner._id && (
-          <Button variant="primary" onClick={handleShow}>
-            modifier
-          </Button>
+        {auth.user && auth.user._id === el.owner._id && (
+          <>
+            <Button variant="primary" onClick={handleShow}>
+              modifier
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>
+              {" "}
+              Delete
+            </Button>
+          </>
         )}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header>
@@ -149,7 +163,9 @@ const CategoryPetsComponent = ({ el }) => {
             </Button>
             <Button
               variant="primary"
-              onClick={(handleClose, () => dispatch(update(el._id, input)))}
+              onClick={
+                (handleClose, () => dispatch(update(el._id, input, catId)))
+              }
             >
               Save Changes
             </Button>

@@ -21,7 +21,7 @@ app.use("/product", require("./servers/routes/product"));
 app.use("/collection", require("./servers/routes/category"));
 app.use("/categories", require("./servers/routes/category"));
 
-app.use("/api/product", require("./servers/routes/update"));
+//app.use("/api/product", require("./servers/routes/update"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`server is running on PORT : ${PORT}`));

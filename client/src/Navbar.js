@@ -6,6 +6,7 @@ import { Button } from "././pages/Button";
 import { GiHamburgerMenu } from "react-icons/gi";
 import "./Navbar.css";
 import "./App.css";
+
 const Navbar = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -54,9 +55,14 @@ const Navbar = () => {
       </nav>
         <div className="container"></div> */}
       <nav className="navbar">
-        <div className="navbar-container">
+        <div className="navbar-container ">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            PetStore<i class="fas fa-typo3"></i>
+            {/* PetStore<i class="fas fa-typo3"></i> */}
+            <img
+              className="nav-roua"
+              src="https://demo.qodeinteractive.com/bridge67/wp-content/uploads/2015/03/slider-graphic.png"
+              alt="Third slide"
+            />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -89,7 +95,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <Link
                     to="/feed"
-                    className="nav-links"
+                    className="nav-links "
                     onClick={closeMobileMenu}
                   >
                     Déposer une annonce
@@ -97,13 +103,13 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Button>
-                  <Link
-                    className="nav-links1"
-                    onClick={closeMobileMenu}
-                    onClick={() => dispatch(logoutUser())}
-                  >
-                    LOG OUT
-                  </Link>
+                    <Link
+                      className="nav-links1"
+                      onClick={closeMobileMenu}
+                      onClick={() => dispatch(logoutUser())}
+                    >
+                      Déconnexion
+                    </Link>
                   </Button>
                 </li>
               </ul>
@@ -113,7 +119,7 @@ const Navbar = () => {
               <ul className={click ? "nav-menu active" : "nav-menu"}>
                 <li className="nav-item">
                   <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                  Accueil
+                    Accueil
                   </Link>
                 </li>
                 {
@@ -123,18 +129,16 @@ const Navbar = () => {
                       className="nav-links"
                       onClick={closeMobileMenu}
                     >
-                      LOGIN
+                      Connexion
                     </Link>
                   </li>
                 }
 
-                <li className="nav-item">
-                  <Link to="/register" onClick={closeMobileMenu}>
-                    {
-                      <Button className="btn" buttonStyle="btn--outline">
-                        Déposer une annonce
-                      </Button>
-                    }
+                <li className="nav-item ">
+                  <Link to="/register" className="btnfont " onClick={closeMobileMenu}>
+                    <Button className="btn btnfont " buttonStyle="btn--outline">
+                      Déposer une annonce
+                    </Button>
                   </Link>
                 </li>
               </ul>

@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import PrivateRoute from "./PrivateRoute";
 import "./App.css";
 import CategoryPets from "./pages/CategoryPets";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/feed" component={Feed} />
           <Route path="/category/:id" component={CategoryPets} />
+          <PrivateRoute exact path="/profile" component={Profile}/>
         </Switch>
       </Router>
     </div>

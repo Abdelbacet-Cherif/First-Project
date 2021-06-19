@@ -6,8 +6,11 @@ import { getAllCategorie } from "../actions/categorieActions";
 
 import "./Home.css";
 import HomeCard from "./HomeCard";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
+  const history = useHistory();
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const Products = useSelector((state) => state.productReducer);
@@ -17,6 +20,9 @@ const Home = () => {
     // dispatch(getProducts());
     dispatch(getAllCategorie());
   }, [dispatch]);
+  useEffect(() => {
+    if (auth.isAuth === false) history.push("/");
+  }, [auth.isAuth]);
   return (
     <div>
       {/* <video scr="./videos/video.mp4"  /> */}

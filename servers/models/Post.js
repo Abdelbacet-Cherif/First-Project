@@ -14,6 +14,7 @@ const PostSchema = new mongoose.Schema({
   image: [String],
   city: String,
   price: String,
+  phone:String,
   description: String,
   created_at: {
     type: Date,

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getAllProducts } = require("../controllers/productControler");
+const { getAllProducts,deleteProduct,updateAllProducts } = require("../controllers/productControler");
 const authMiddleware = require("../helpers/authMiddleware");
 const Post = require("../models/Post");
 const upload = require("../helpers/multerStorage");
@@ -27,5 +27,8 @@ router.post("/", [upload.array("image", 10), authMiddleware], (req, res) => {
 });
 
 router.get("/:cat_id", getAllProducts);
+
+router.delete('/delete/:id',deleteProduct)
+router.put("/:id", updateAllProducts);
 
 module.exports = router;
