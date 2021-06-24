@@ -32,6 +32,9 @@ const Login = ({ history }) => {
       //   }, 5000);
     }
   }, [auth.isAuth, auth.error]);
+  useEffect(() => {
+    setErrors(null)
+  }, [])
   return (
     // <form onSubmit={login}>
     //   <div>
@@ -51,11 +54,10 @@ const Login = ({ history }) => {
     //   <button type="submit">Login</button>
     // </form>
     <div className="color espace">
-      {" "}
-      <div className="row no-gutters">         
-
+     
+      <div className="row no-gutters">
         <div className="col-md-6 no-gutters">
-          {" "}
+         
           <Form
             className=" inline leftside justify-content-center align-items-center  left login  flexdis "
             onSubmit={login}
@@ -84,15 +86,19 @@ const Login = ({ history }) => {
             </div>
             {errors &&
               (typeof errors === "string" ? (
-                <h1>{errors}</h1>
+                <p className="error1">{errors}</p>
               ) : (
-                errors.map((el) => <h1>{el.msg}</h1>)
+                errors.map((el) => <p className="error1">{el.msg}</p>)
               ))}
-            <Button className="btn btn-md btn-secondary buttonmedia" type="submit">
+            {/* <Button className="btn btn-md btn-secondary buttonmedia" type="submit">
               CONNEXION
+            </Button> */}
+            <Button className="buttoncnx" variant="primary" type="submit">
+              Connexion
             </Button>
           </Form>
-        </div> <img src="./images/login-image.jpg" className="displayim" />
+        </div>
+        <img src="./images/login-image.jpg" className="displayim" />
       </div>
     </div>
   );

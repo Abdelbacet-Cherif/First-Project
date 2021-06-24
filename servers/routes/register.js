@@ -23,7 +23,8 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    User.find({ email: req.body.email }).then((users) => {
+    User.find({ email: req.body.email })
+    .then((users) => {
       if (users.length) {
         return res
           .status(400)

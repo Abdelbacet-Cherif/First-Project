@@ -102,15 +102,15 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Button>
+                  
                     <Link
                       className="nav-links1"
                       onClick={closeMobileMenu}
                       onClick={() => dispatch(logoutUser())}
-                    >
-                      Déconnexion
+                    ><Button >
+                      Déconnexion</Button>
                     </Link>
-                  </Button>
+                  
                 </li>
               </ul>
             </div>
@@ -135,8 +135,8 @@ const Navbar = () => {
                 }
 
                 <li className="nav-item ">
-                  <Link to="/register" className="btnfont " onClick={closeMobileMenu}>
-                    <Button className="btn btnfont " buttonStyle="btn--outline">
+                  <Link to="/register"  onClick={closeMobileMenu}>
+                    <Button className="btn btnfont1 " buttonStyle="btn--outline">
                       Déposer une annonce
                     </Button>
                   </Link>

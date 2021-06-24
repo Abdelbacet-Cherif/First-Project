@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deletes, update } from "../actions/productActions";
+import EditPost from "../components/EditPost";
 const CategoryPetsComponent = ({ el, catId }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -38,8 +39,12 @@ const CategoryPetsComponent = ({ el, catId }) => {
 
   return (
     <div>
-      <div style={{ width: "150px", heigth: "150px" }}>
-        <Carousel activeIndex={index} onSelect={handleSelect}>
+      <div className="car1" style={{ width: "150px" }}>
+        <Carousel
+          style={{ height: "140px" }}
+          activeIndex={index}
+          onSelect={handleSelect}
+        >
           {el.image &&
             el.image.map((img) => (
               <Carousel.Item>
@@ -77,7 +82,7 @@ const CategoryPetsComponent = ({ el, catId }) => {
           {el.phone}
         </span>
         {/* modal */}
-        {auth.user && auth.user._id === el.owner._id && (
+        {/* {auth.user && auth.user._id === el.owner._id && (
           <>
             <Button variant="primary" onClick={handleShow}>
               modifier
@@ -170,7 +175,8 @@ const CategoryPetsComponent = ({ el, catId }) => {
               Save Changes
             </Button>
           </Modal.Footer>
-        </Modal>
+        </Modal> */}
+        <EditPost el={el} catId={catId} />
       </div>
     </div>
   );

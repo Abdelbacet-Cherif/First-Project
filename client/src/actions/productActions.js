@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "../constants/productConstants";
+import setToken from "../setToken";
 
 //get
 export const getProducts = (id) => async (dispatch) => {
@@ -47,6 +48,8 @@ export const createProduct = (data) => async (dispatch) => {
 export const update = (id, updateData, catId) => async (dispatch) => {
   try {
     const { data } = await axios.put(`/product/${id}`, updateData);
+    catId ? dispatch(getProducts(catId)) : dispatch(getmypost());
+
     /*  dispatch({
       type: actionTypes.GET_PRODUCTS_SUCCESS,
       payload: data,
@@ -67,7 +70,7 @@ export const update = (id, updateData, catId) => async (dispatch) => {
 export const deletes = (id, catId) => async (dispatch) => {
   try {
     const { data } = await axios.delete(`/product/delete/${id}`);
-    dispatch(getProducts(catId));
+    catId ? dispatch(getProducts(catId)) : dispatch(getmypost());
   } catch (error) {
     dispatch({
       type: actionTypes.GET_PRODUCTS_FAIL,
@@ -75,6 +78,23 @@ export const deletes = (id, catId) => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
+    });
+  }
+};
+
+//get my post (profile)
+export const getmypost = () => async (dispatch) => {
+  try {
+    setToken();
+    const { data } = await axios.get(`/post/myPosts`);
+    dispatch({
+      type: actionTypes.GET_MY_POSTS_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: actionTypes.GET_MY_POSTS_FAIL,
+      payload: err.response.data.errors,
     });
   }
 };

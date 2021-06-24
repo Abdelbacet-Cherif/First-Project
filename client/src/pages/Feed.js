@@ -17,7 +17,7 @@
 
 // export default Feed;
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { loadUser } from "../actions/authActions";
 import { getAllCategorie } from "../actions/categorieActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,16 +25,19 @@ import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
 import FeedCard from "./HomeCard";
 import { createProduct } from "../actions/productActions";
 import "./Feed.css";
+import ListVilleDropdown from "../components/ListVilleDropdown";
 const Feed = ({ history }) => {
+  const title = useRef();
   const [data, setData] = useState({
     title: "",
     price: "",
     gender: "",
     city: "",
     image: null,
-    category: "60ca061f7961083658eb800b",
+    category: "",
     description: "",
   });
+  const [valideForm, setvalideForm] = useState(false);
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const { categories } = useSelector((state) => state.categories);
@@ -47,10 +50,15 @@ const Feed = ({ history }) => {
   }, [auth.isAuth]);
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
+    // validation();
   };
 
   const handleImage = (e) => {
     setData({ ...data, image: e.target.files });
+    // validation();
+  };
+  const handleVilleSearch = (value) => {
+    setData({ ...data, city: value });
   };
 
   const handleSubmit = (e) => {
@@ -65,7 +73,9 @@ const Feed = ({ history }) => {
     dispatch(createProduct(formData));
     history.push("/profile");
   };
-
+  // const validation = () => {
+  //   title.current.value !== "" ? setvalideForm(true) : setvalideForm(false);
+  // };
   return (
     <div className="multer color espace">
       <div>
@@ -76,24 +86,45 @@ const Feed = ({ history }) => {
         <h4 className="create">Ajoutez une annonce</h4>
         <Form className="label">Titre *</Form>
         <Form className="label" onSubmit={handleSubmit}>
-          <FormControl className="input" name="title" onChange={handleChange} />
+          <FormControl
+            required
+            className="input"
+            // ref={title}
+            name="title"
+            onChange={handleChange}
+          />
           <Form className="label">Genre *</Form>
           <FormControl
+            required
             className="input"
             name="gender"
             onChange={handleChange}
           />
           <Form className="label">Prix *</Form>
-          <FormControl className="input" name="price" onChange={handleChange} />
-          <Form className="label">Ville *</Form>
-          <FormControl className="input" name="city" onChange={handleChange} />
+          <FormControl
+            required
+            className="input"
+            name="price"
+            onChange={handleChange}
+          />
+          {/* <Form className="label">Ville *</Form>
+          <FormControl required className="input" name="city" onChange={handleChange} /> */}
+          <ListVilleDropdown
+            defaults={true}
+            handleVilleSearch={handleVilleSearch}
+          />
           <Form.Group
             className="input1"
             controlId="exampleForm.ControlTextarea1"
           >
-          <label className="label">Télephone *</label>
-             <FormControl className="input" name="phone" onChange={handleChange} />
-            <Form.Label className="label">Texte de votre annonce *</Form.Label>
+            <label className="label">Télephone *</label>
+            <FormControl
+              required
+              className="input"
+              name="phone"
+              onChange={handleChange}
+            />
+            <Form.Label className="label">Texte de votre annonce</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -158,10 +189,14 @@ const Feed = ({ history }) => {
           {/* <Form className="label">Photos de votre annonce *</Form> */}
           <input type="file" onChange={handleImage} multiple />
           <input
+            // disabled={!valideForm}
             className="btn btn-md btn-secondary"
             type="submit"
             value="add new product"
           />
+          {/* <h4 style={{ visibility: valideForm ? "hidden" : "visible" }}>
+            veuillhghhhg yyggyhg
+          </h4> */}
         </Form>
       </div>
     </div>

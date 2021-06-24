@@ -7,6 +7,7 @@ import {
   LOAD_USER_FAIL,
   LOGOUT,
 } from "../actions/types";
+import { GET_MY_POSTS_SUCCESS } from "../constants/productConstants";
 
 let initState = {
   token: localStorage.getItem("token"),
@@ -48,6 +49,11 @@ const AuthReducer = (state = initState, action) => {
         isAuth: false,
         error: null,
         user: null,
+      };
+    case GET_MY_POSTS_SUCCESS:
+      return {
+        ...state,
+        user: { ...state.user, posts: action.payload },
       };
     default:
       return state;

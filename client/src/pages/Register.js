@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser, loginUser } from "../actions/authActions";
 // import TextField from "@material-ui/core/TextField";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import "./Register.css";
 
 const Register = ({ history }) => {
@@ -17,6 +17,9 @@ const Register = ({ history }) => {
   const [errors, setErrors] = useState(null);
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
+  useEffect(() => {
+    setErrors(null)
+  }, [])
 
   useEffect(() => {
     if (auth.error) {
@@ -29,6 +32,9 @@ const Register = ({ history }) => {
       history.push("/feed");
     }
   }, [auth.isAuth, auth.error]);
+  useEffect(() => {
+    setErrors(null)
+  }, [])
 
   const handleChangeRegister = (e) => {
     setInfoRegister({ ...infoRegister, [e.target.name]: e.target.value });
@@ -84,7 +90,7 @@ const Register = ({ history }) => {
                 />
               </div>
               <div className="log">
-                <Form className="label">Password *</Form>
+                <Form className="label"> Votre mot de passe * </Form>
                 <Form.Control
                   className="input"
                   type="search"
@@ -93,10 +99,17 @@ const Register = ({ history }) => {
                   onChange={handleChangeLogin}
                 />
               </div>
-              {errors && errors.map((el) => <h1>{el.msg}</h1>)}
-              <button className="btn btn-md btn-secondary" type="submit">
+              {/*errors && errors.map((el) => <p className="error1">{el.msg}</p>)*/}
+              {/* {errors && <p className="error1">{errors[2].msg}</p>}
+              {errors && <p className="error1">{errors[4].msg}</p>} */}
+
+              
+              {/* <button className="btn btn-md btn-secondary" type="submit">
                 ME CONNECTER
-              </button>
+              </button> */}
+              <Button className="buttoncnx" variant="primary" type="submit">
+                Me connecter
+              </Button>
             </Form>
           </div>
           <div className="col-md-6 no-gutters">
@@ -160,10 +173,13 @@ const Register = ({ history }) => {
                   onChange={handleChangeRegister}
                 />
               </div>
-              {errors && errors.map((el) => <h1>{el.msg}</h1>)}
-              <button className="btn btn-md btn-secondary " type="submit">
-                CRÉER MON COMPTE
-              </button>
+              {errors && errors.map((el) => <p className="error1">{el.msg}</p>)}
+              {/* <button className="btn btn-md btn-secondary " type="submit">
+                Créer mon compte
+              </button> */}
+              <Button className="buttoncnx" variant="primary" type="submit">
+                Créer mon compte
+              </Button>
             </Form>
           </div>
         </div>

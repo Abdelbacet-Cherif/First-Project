@@ -27,7 +27,8 @@ router.get("/", authMiddleware, (req, res) => {
 });
 //Get user posts
 router.get("/myPosts", authMiddleware, (req, res) => {
-  User.find({ owner: req.userId })
+ 
+  Post.find({ owner: req.userId })
     .then((posts) => res.send(posts))
     .catch((err) => {
       console.log(err.message);
@@ -36,7 +37,6 @@ router.get("/myPosts", authMiddleware, (req, res) => {
 });
 // router.post("/add", (req,res)=>{
 //   let newpost=new Post(req.body)
-
 //   newpost.save((err,post)=>{
 //      err ? console.log(err) : res.status(200).json(post)
 //   })

@@ -35,7 +35,8 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    User.findOne({ email: req.body.email }).then((user) => {
+    User.findOne({ email: req.body.email })
+    .then((user) => {
       if (!user) {
         return res
           .status(404)

@@ -6,13 +6,15 @@ import {
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
   LOGOUT,
+  UPDATE_PROFILE_SUCCESS,
 } from "./types";
 import axios from "axios";
 import setToken from "../setToken";
+import { getmypost } from "./productActions";
 
 export const registerUser = (info) => (dispatch) => {
   axios
-    .post("register", info)
+    .post("/register", info)
     .then((res) => {
       dispatch({
         type: REGISTER_SUCCESS,
@@ -68,4 +70,13 @@ export const logoutUser = () => (dispatch) => {
   dispatch({
     type: LOGOUT,
   });
+};
+
+//update profile
+export const updateProfile = (profile) => async (dispatch) => {
+  try {
+    const { data } = axios.put("/profile/editprofile", profile);
+    dispatch(loadUser());
+    dispatch(getmypost());
+  } catch (err) {}
 };

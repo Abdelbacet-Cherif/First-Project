@@ -15,7 +15,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-
+import "../pages/CategoryPets.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -48,30 +48,34 @@ const ProductComponents = ({ post }) => {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        /*  action={
+    <div >
+      
+        <Card  className={classes.root}>
+          <CardHeader
+            /*  action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
           </IconButton>         !!!!!!!!!!!error!!!!!!!!!!!
         } */
-        title={post.title}
-        subheader={post.created_at}
-      />
+            title={post.title}
+            subheader={post.created_at}
+          />
 
-      <CardMedia
-        className={classes.media}
-        image={post.image[0]}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {post.city}
-          <br />
-          {post.price}
-        </Typography>
-      </CardContent>
-    </Card>
+          <CardMedia
+            className={classes.media}
+            image={post.image[0]}
+            title="Paella dish"
+          />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {post.city}
+              <br />
+              {post.price}
+            </Typography>
+          </CardContent>
+        </Card>
+      
+    </div>
   );
 };
 

@@ -16,13 +16,13 @@ app.use(cors());
 //Define Routes
 app.use("/register", require("./servers/routes/register"));
 app.use("/login", require("./servers/routes/login"));
-// app.use("/post", require("./servers/routes/post"));
+app.use("/post", require("./servers/routes/post"));
 app.use("/product", require("./servers/routes/product"));
 app.use("/collection", require("./servers/routes/category"));
 app.use("/categories", require("./servers/routes/category"));
+app.use("/profile", require("./servers/routes/userRoutes"));
 
 //app.use("/api/product", require("./servers/routes/update"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`server is running on PORT : ${PORT}`));
-

@@ -13,3 +13,8 @@ export const LOGOUT = "LOGOUT";
 //Categorie types:
 export const GET_CATEGORIE_SUCCESS = "GET_CATEGORIE_SUCCESS";
 export const GET_CATEGORIE_FAIL = "GET_CATEGORIE_FAIL";
+
+
+//update profile
+export const UPDATE_PROFILE_SUCCESS = "UPDATE_PROFILE_SUCCESS";
+export const UPDATE_PROFILE_FAIL = "UPDATE_PROFILE_FAIL";

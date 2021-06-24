@@ -30,12 +30,14 @@ const Home = () => {
       <Carousel fade>
         <Carousel.Item>
           <Carousel.Caption className="absolute">
+            <h1 className="hello">Bienvenue</h1>
             <img
               className="logo-header"
               src="https://demo.qodeinteractive.com/bridge67/wp-content/uploads/2015/03/slider-graphic.png"
               alt="Third slide"
             />
           </Carousel.Caption>
+
           <img
             className="carousel relative"
             src="./images/dog.home.jpg"
@@ -43,6 +45,13 @@ const Home = () => {
           />
         </Carousel.Item>
         <Carousel.Item>
+          <Carousel.Caption className="absolute">
+            <img
+              className="logo-header"
+              src="https://demo.qodeinteractive.com/bridge67/wp-content/uploads/2015/03/slider-graphic.png"
+              alt="Third slide"
+            />
+          </Carousel.Caption>
           <img
             className="carousel "
             src="./images/cat.home.jpg"
@@ -58,7 +67,7 @@ const Home = () => {
         </Carousel.Item> */}
       </Carousel>
 
-      <Row className="row">
+      <Row className="row1">
         {categories.categories
           ? categories.categories.map((el, i) => (
               <Col>

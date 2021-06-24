@@ -1,9 +1,13 @@
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
-.flex2{
-    width: 300px;
+.flex2 {
+  width: 300px;
 }
-.flex1{
-    width: 150px;
+.flex1 {
+  width: 150px;
+}
+.car1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

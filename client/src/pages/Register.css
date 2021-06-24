@@ -133,22 +133,31 @@
  .create {
    margin-bottom: 5%;
  } */
+ .error1{
+   color: #df1414;
+ }
 .displayim {
   padding-top: 2%;
   display: inline-flex;
   width: 50%;
 }
-.buttonmedia {
-  width: 40%;
-  font-size: 80% !important;
+.buttoncnx{
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-size: 14px !important;
 }
-@media (max-width: 960px) {
+.buttonmedia {
+  
+  font-size: 14px
+ 
+}
+/* @media (max-width: 960px) {
   .buttonmedia {
     height: 20% !important;
     width: 50%;
     font-size: 50% !important;
     margin-right: 50px !important;
-  }
+  } */
   /* .col-md-6 {
     flex: 0 0 auto;
     width: 50%;
@@ -163,7 +172,7 @@
   .input {
     width: 100%;
   } */
-}
+/* }
 @media (max-width: 1140px) {
   .buttonmedia {
     height: 20% !important;
@@ -171,4 +180,4 @@
     font-size: 50% !important;
     margin-right: 50px !important;
   }
-}
+} */
