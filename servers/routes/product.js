@@ -4,6 +4,8 @@ const {
   getAllProducts,
   deleteProduct,
   updateAllProducts,
+  getProductsByGroup,
+  getProductsNumber,
 } = require("../controllers/productControler");
 const authMiddleware = require("../helpers/authMiddleware");
 const Post = require("../models/Post");
@@ -33,5 +35,7 @@ router.post("/", [upload.array("image", 10), authMiddleware], (req, res) => {
 router.get("/:cat_id", getAllProducts);
 router.delete("/delete/:id", deleteProduct);
 router.put("/:id", updateAllProducts);
+router.get("/api/:query", getProductsByGroup);
+router.get("/number/:cat_id", getProductsNumber);
 
 module.exports = router;

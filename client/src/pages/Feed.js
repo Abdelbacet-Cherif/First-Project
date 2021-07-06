@@ -21,7 +21,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { loadUser } from "../actions/authActions";
 import { getAllCategorie } from "../actions/categorieActions";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 import FeedCard from "./HomeCard";
 import { createProduct } from "../actions/productActions";
 import "./Feed.css";
@@ -113,25 +113,23 @@ const Feed = ({ history }) => {
             defaults={true}
             handleVilleSearch={handleVilleSearch}
           />
-          <Form.Group
-            className="input1"
-            controlId="exampleForm.ControlTextarea1"
-          >
-            <label className="label">Télephone *</label>
-            <FormControl
-              required
-              className="input"
-              name="phone"
-              onChange={handleChange}
-            />
-            <Form.Label className="label">Texte de votre annonce</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              name="description"
-              onChange={handleChange}
-            />
-          </Form.Group>
+
+          <label className="label">Télephone *</label>
+          <FormControl
+            required
+            className="inputtunis"
+            name="phone"
+            onChange={handleChange}
+          />
+          <Form.Label className="label">Texte de votre annonce</Form.Label>
+          <Form.Control
+            className="input"
+            as="textarea"
+            rows={3}
+            name="description"
+            onChange={handleChange}
+          />
+
           {/* <div className="input">
             <label htmlFor="exampleFormControlTextarea1">
             Texte de votre annonce *
@@ -152,15 +150,22 @@ const Feed = ({ history }) => {
           {/* <Form.Control as="select">
     <option>Default select</option>
   </Form.Control> */}
+            <label className="label">Choisir votre annonces*</label>
 
+  <Form.Group className="ds">
           <Form.Control
+            className="inputtunis1"
+            // htmlFor="grouped-native-select"
+            // id="grouped-native-select"
             as="select"
-            className="my-1 mr-sm-2"
-            id="inlineFormCustomSelectPref"
+            // className="my-1 mr-sm-2"
+            // id="inlineFormCustomSelectPref"
             onChange={handleChange}
             name="category"
-            custom
+            // custom
+            required
           >
+            
             <option value="0">Choisir...</option>
             {categories &&
               categories.map((el) => <option value={el._id}>{el.name}</option>)}
@@ -187,12 +192,28 @@ const Feed = ({ history }) => {
               categories.map((el) => <option value={el._id}>{el.name}</option>)}
           </Form.Control> */}
           {/* <Form className="label">Photos de votre annonce *</Form> */}
-          <input type="file" onChange={handleImage} multiple />
+          {/* <Form.File
+            className="position-relative"
+            required
+            name="file"
+            feedbackTooltip
+            onChange={handleImage}
+            multiple
+          /> */}
+          <Form.File
+            className="position1"
+            required
+            onChange={handleImage}
+            // id="validationFormik107"
+            feedbackTooltip
+            multiple
+          />
+          </Form.Group>
           <input
             // disabled={!valideForm}
             className="btn btn-md btn-secondary"
             type="submit"
-            value="add new product"
+            value="Ajouter votre annonce"
           />
           {/* <h4 style={{ visibility: valideForm ? "hidden" : "visible" }}>
             veuillhghhhg yyggyhg

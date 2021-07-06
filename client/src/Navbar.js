@@ -65,8 +65,8 @@ const Navbar = () => {
             />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-            <GiHamburgerMenu className="gi" />
+            <i  className={click ? "fas fa-times" : "fas fa-bars"} />
+            {/* <GiHamburgerMenu className="gi" /> */}
             {/* <label for="check">
               <input type="checkbox" className="check" />
               <span></span>
@@ -107,10 +107,16 @@ const Navbar = () => {
                       className="nav-links1"
                       onClick={closeMobileMenu}
                       onClick={() => dispatch(logoutUser())}
-                    ><Button >
+                    ><Button  >
                       Déconnexion</Button>
                     </Link>
                   
+                </li>
+                <li className="nav-item ">
+               <Link to="/profile" onClick={closeMobileMenu} >
+                <i  class="fas fa-user-circle coloruser" ></i>
+                </Link>
+                 
                 </li>
               </ul>
             </div>
@@ -140,6 +146,12 @@ const Navbar = () => {
                       Déposer une annonce
                     </Button>
                   </Link>
+                </li>
+                <li className="nav-item ">
+               <Link to="/register" onClick={closeMobileMenu} >
+                <i  class="fas fa-user-circle coloruser" ></i>
+                </Link>
+                 
                 </li>
               </ul>
             </div>

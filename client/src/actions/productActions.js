@@ -22,6 +22,25 @@ export const getProducts = (id) => async (dispatch) => {
     });
   }
 };
+export const getProductsByPage = (id,start) => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
+    const { data } = await axios.get("/product/api/" + id+"-"+start);
+
+    dispatch({
+      type: actionTypes.GET_PRODUCTS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.GET_PRODUCTS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 //create
 export const createProduct = (data) => async (dispatch) => {

@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Post = require("../models/Post");
 
 const getAllProducts = async (req, res) => {
@@ -46,6 +47,35 @@ const getMyPosts = async (req, res) => {
   }
 };
 
+//pagination----------------------------
+const getProductsByGroup = async (req, res) => {
+  try {
+    // let start=req.header('start')
+    const [catId, start] = req.params.query.split("-");
+    const product = await Post.find({ category: catId }).populate("owner");
+    let finalProduct = product.filter((el, i) => i >= +start && i < +start + 3);
+    console.log(start)
+    console.log(finalProduct.length)
+    res.json(finalProduct);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+const getProductsNumber = async (req, res) => {
+  // console.log('test');
+  try {
+    const product = await Post.find({ category: req.params.cat_id })
+    res.json(product.length);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+
+
 // const addproduct = async (req,res)=>{
 //     try {
 //         const newProduct = new Product(req.body)
@@ -68,7 +98,9 @@ const getMyPosts = async (req, res) => {
 // }
 
 module.exports = {
+  getProductsNumber,
   getAllProducts,
   updateAllProducts,
   deleteProduct,
+  getProductsByGroup,
 };

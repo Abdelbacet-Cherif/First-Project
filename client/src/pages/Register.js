@@ -5,6 +5,7 @@ import { registerUser, loginUser } from "../actions/authActions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button } from "react-bootstrap";
 import "./Register.css";
+import Select from "../components/Select";
 
 const Register = ({ history }) => {
   const [infoRegister, setInfoRegister] = useState({
@@ -18,8 +19,8 @@ const Register = ({ history }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   useEffect(() => {
-    setErrors(null)
-  }, [])
+    setErrors(null);
+  }, []);
 
   useEffect(() => {
     if (auth.error) {
@@ -33,8 +34,8 @@ const Register = ({ history }) => {
     }
   }, [auth.isAuth, auth.error]);
   useEffect(() => {
-    setErrors(null)
-  }, [])
+    setErrors(null);
+  }, []);
 
   const handleChangeRegister = (e) => {
     setInfoRegister({ ...infoRegister, [e.target.name]: e.target.value });
@@ -70,7 +71,7 @@ const Register = ({ history }) => {
         vos annonces sur Animals.
       </p>
       <div className="color">
-        {" "}
+      
         <div className="row no-gutters">
           <div className="col-md-6 no-gutters">
             <Form
@@ -103,7 +104,6 @@ const Register = ({ history }) => {
               {/* {errors && <p className="error1">{errors[2].msg}</p>}
               {errors && <p className="error1">{errors[4].msg}</p>} */}
 
-              
               {/* <button className="btn btn-md btn-secondary" type="submit">
                 ME CONNECTER
               </button> */}
@@ -181,7 +181,8 @@ const Register = ({ history }) => {
                 Créer mon compte
               </Button>
             </Form>
-          </div>
+            {/* <Select/> */}
+             </div>
         </div>
       </div>
     </div>

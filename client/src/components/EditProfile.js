@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../actions/authActions";
+import "../css/Profile.css";
 
 const EditProfile = ({ user }) => {
   const [input, setInput] = useState(user);
@@ -18,42 +19,50 @@ const EditProfile = ({ user }) => {
   };
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <button className="buttonprofile" onClick={handleShow}>
         modifier
-      </Button>
+      </button>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+        <Modal.Header>
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            onClick={handleClose}
+          ></button>
         </Modal.Header>
-
         <Modal.Body>
-          <div>
-            <label>Prénom</label>
+          <div className="flex">
+            <label className="flex1">Prénom:</label>
             <input
+              className="flex2"
               value={input.firstname}
               name="firstname"
               onChange={handleChange}
             ></input>
           </div>
-          <div>
-            <label>Nom</label>
+          <div className="flex">
+            <label className="flex1">Nom:</label>
             <input
+              className="flex2"
               value={input.lastname}
               name="lastname"
               onChange={handleChange}
             ></input>
           </div>
-          <div>
-            <label>Téléphone</label>
+          <div className="flex">
+            <label className="flex1">Téléphone:</label>
             <input
+              className="flex2"
               value={input.phone}
               name="phone"
               onChange={handleChange}
             ></input>
           </div>
-          <div>
-            <label>Email</label>
+          <div className="flex">
+            <label className="flex1">Email:</label>
             <input
+              className="flex2"
               value={input.email}
               name="email"
               onChange={handleChange}
@@ -62,8 +71,12 @@ const EditProfile = ({ user }) => {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary">Close</Button>
-          <Button variant="primary" onClick={handleSave}>Save changes</Button>
+          {/* <Button variant="primary" onClick={handleClose}>
+            Fermer
+          </Button> */}
+          <button className="buttonSave" onClick={handleSave}>
+            Sauvgarder
+          </button>
         </Modal.Footer>
       </Modal>
     </div>

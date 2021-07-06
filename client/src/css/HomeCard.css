@@ -7,17 +7,23 @@
 .card:hover{
     background-color: rgb(221, 221, 221);
 } */
-.row {
-  display: flex;
-  align-items: flex-start;
-  margin: 0;
-}
+
 /* .cards {
   display: flex;
   align-items: flex-start;
   justify-content: center;
 } */
-
+.row1 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.colorcategory {
+  background-color: rgb(23, 165, 244);
+}
+.colorcategory:hover {
+  background-color: rgb(31, 47, 125);
+}
 .cart {
   background: #fff;
   width: 12em;
@@ -45,16 +51,31 @@
 .catego {
   color: #fff;
   text-decoration: none;
-  background-color: #fc480c;
 }
 .catego:hover {
   background-color: #1f2f7d;
 }
+.categoname {
+  text-align: center;
+}
+.categoname:hover {
+  color: rgb(255, 255, 255);
+}
 .containersecond {
-  padding: 0 !important;
+  /* padding: 0 !important;
+  margin: 0 !important; */
+  width: 220px !important;
+}
+
+.all {
+  padding-top: 50px;
+  /* padding-left: 10px; */
 }
 /* @media screen and (max-width: 960px) {
   .container {
     width: 500px;
   }
 } */
+.colorcategory:hover {
+  background-color: #1f2f7d !important;
+}

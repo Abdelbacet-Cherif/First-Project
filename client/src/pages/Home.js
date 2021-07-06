@@ -23,6 +23,7 @@ const Home = () => {
   useEffect(() => {
     if (auth.isAuth === false) history.push("/");
   }, [auth.isAuth]);
+  const randomColor = ["#17A5F4", "#A8C80D", "#F7470C"];
   return (
     <div>
       {/* <video scr="./videos/video.mp4"  /> */}
@@ -31,18 +32,23 @@ const Home = () => {
         <Carousel.Item>
           <Carousel.Caption className="absolute">
             <h1 className="hello">Bienvenue</h1>
+            <h1 className="titre1">ENVIE D'ADOPTER UN CHIEN ?</h1>
+            {/* <video scr="./videos/video.mp4"  /> */}
+
             <img
               className="logo-header"
               src="https://demo.qodeinteractive.com/bridge67/wp-content/uploads/2015/03/slider-graphic.png"
               alt="Third slide"
             />
           </Carousel.Caption>
-
-          <img
+          <video width="100%" height="100%"   playsinline="" autoplay="" muted="" loop >
+  <source src="./videos/video.mp4" type="video/mp4"/>
+  </video>
+          {/* <img
             className="carousel relative"
             src="./images/dog.home.jpg"
             alt="First slide"
-          />
+          /> */}
         </Carousel.Item>
         <Carousel.Item>
           <Carousel.Caption className="absolute">
@@ -66,15 +72,17 @@ const Home = () => {
           />
         </Carousel.Item> */}
       </Carousel>
-
+      <h1 className="line1">Nos Annonces</h1>
       <Row className="row1">
-        {categories.categories
-          ? categories.categories.map((el, i) => (
-              <Col>
-                <HomeCard categorie={el} />
+        {categories.categories ? (
+          <div className="grid1">
+            {categories.categories.map((el, i) => (
+              <Col className="coll2">
+                <HomeCard color={randomColor[i % 3]} categorie={el} />
               </Col>
-            ))
-          : null}
+            ))}
+          </div>
+        ) : null}
       </Row>
       {/* {products &&
         products.map(

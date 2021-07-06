@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Alert, Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deletes, update } from "../actions/productActions";
+import "../css/Profile.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const EditPost = ({ el, catId }) => {
+  const notify = () => {toast.error("Votre poste était effacé",{autoClose:false})};
   const auth = useSelector((state) => state.auth);
   const [input, setinput] = useState({
     title: el.title,
@@ -18,6 +23,7 @@ const EditPost = ({ el, catId }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const handleChange = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value });
   };
@@ -31,16 +37,21 @@ const EditPost = ({ el, catId }) => {
 
   return (
     <div>
-     
-      {auth.user && auth.user._id === el.owner && (
+      {auth.user && auth.user._id === (el.owner._id || el.owner) && (
         <>
-          <Button variant="primary" onClick={handleShow}>
+          <button className="buttonup"  onClick={handleShow}>
             modifier
-          </Button>
-          <Button variant="danger" onClick={handleDelete}>
-            {" "}
-            Delete
-          </Button>
+          </button>
+          <button
+            className="buttonsup"
+            onClick={() => {
+              notify();
+              handleDelete();
+            }}
+          >
+            Effacer
+          </button>
+          <ToastContainer />
         </>
       )}
       <Modal show={show} onHide={handleClose}>
@@ -113,12 +124,9 @@ const EditPost = ({ el, catId }) => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleSave}>
-            Save Changes
-          </Button>
+          <button className="buttonSave" onClick={handleSave}>
+            Sauvgarder
+          </button>
         </Modal.Footer>
       </Modal>
     </div>

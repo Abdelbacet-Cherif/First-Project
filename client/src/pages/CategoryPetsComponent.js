@@ -1,11 +1,12 @@
 import React from "react";
 import "./CategoryPets.css";
-import { Modal, Button, Carousel } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deletes, update } from "../actions/productActions";
 import EditPost from "../components/EditPost";
+// import CardDesign from "../components/CardDesign";
 const CategoryPetsComponent = ({ el, catId }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -39,7 +40,7 @@ const CategoryPetsComponent = ({ el, catId }) => {
 
   return (
     <div>
-      <div className="car1" style={{ width: "150px" }}>
+      <div style={{ width: "150px" }}>
         <Carousel
           style={{ height: "140px" }}
           activeIndex={index}
@@ -52,6 +53,7 @@ const CategoryPetsComponent = ({ el, catId }) => {
               </Carousel.Item>
             ))}
         </Carousel>
+        <Link to={`/details/${el._id}`}>détails...</Link>
         {/* <img
           src={process.env.REACT_APP_STORAGE_URL + el.image[0]}
           width="150"
@@ -176,7 +178,7 @@ const CategoryPetsComponent = ({ el, catId }) => {
             </Button>
           </Modal.Footer>
         </Modal> */}
-        <EditPost el={el} catId={catId} />
+        {/* <EditPost el={el} catId={catId} /> */}
       </div>
     </div>
   );

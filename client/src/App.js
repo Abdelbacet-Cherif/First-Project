@@ -9,12 +9,15 @@ import PrivateRoute from "./PrivateRoute";
 import "./App.css";
 import CategoryPets from "./pages/CategoryPets";
 import Profile from "./pages/Profile";
+import DetailsPost from "./pages/DetailsPost";
+import Footer from "./Footer";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
+        
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
@@ -22,8 +25,12 @@ function App() {
           <PrivateRoute exact path="/feed" component={Feed} />
           <Route path="/category/:id" component={CategoryPets} />
           <PrivateRoute exact path="/profile" component={Profile}/>
+          <Route path="/details/:id" component={DetailsPost} />
+
         </Switch>
+
       </Router>
+      <Footer/>
     </div>
   );
 }

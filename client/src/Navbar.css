@@ -1,5 +1,5 @@
 .navbar {
-  background: linear-gradient(90deg, #1F2F7D 0%, #1F2F7D 100%);
+  background: linear-gradient(90deg, #1f2f7d 0%, #1f2f7d 100%);
   height: 70px;
   display: flex;
   justify-content: center;
@@ -8,7 +8,8 @@
   position: sticky;
   top: 0;
   z-index: 999;
-} .nav-roua{
+}
+.nav-roua {
   width: 200px;
 }
 /* label {
@@ -96,7 +97,7 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3) {
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(5, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
@@ -104,7 +105,7 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3) {
   justify-content: end;
   margin-right: 2rem;
 }
-.btn--primary{
+.btn--primary {
   color: #fff;
 }
 
@@ -112,30 +113,30 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3) {
   height: 50px;
 }
 .btn {
-  background-color: #FE490C;
+  background-color: #fe490c;
   height: 43px;
   font-size: 16px;
-  border:none;
+  border: none;
+  border-radius: 5px !important;
   /* font-family: 'Leckerli One', sans-serif ; */
-  
 }
-.btn--medium{
-  font-family: 'Leckerli One', sans-serif ;
+.btn--medium {
+  font-family: "Leckerli One", sans-serif;
 }
 /* .btnfont1{
   font-family: 'Leckerli One', sans-serif !important;
 
 } */
-.btn:hover{
- color: #fff;
-  background-color:#ADCE0D;
+.btn:hover {
+  color: #fff;
+  background-color: #adce0d;
 }
-.nav-links1{
+.nav-links1 {
   text-decoration: none;
   color: #fff;
-  font-family: 'Leckerli One', sans-serif;
+  font-family: "Leckerli One", sans-serif;
 }
-.nav-links1:hover{
+.nav-links1:hover {
   color: #fff;
 }
 
@@ -147,19 +148,18 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3) {
   padding: 0.5rem 1rem;
   height: 100%;
   font-size: 17px;
-  font-family: 'Leckerli One', sans-serif;
-
+  font-family: "Leckerli One", sans-serif;
 }
 
 .nav-links:hover {
   border-bottom: 4px solid rgb(255, 255, 255);
   transition: all 0.2s ease-out;
-  color: rgb(24,155,234);
+  color: rgb(24, 155, 234);
 }
 .navbar-logo:hover {
   /* border-bottom: 4px solid rgb(255, 255, 255); */
   transition: all 0.2s ease-out;
-  color: rgb(24,155,234);
+  color: rgb(24, 155, 234);
 }
 
 .fa-bars {
@@ -173,6 +173,15 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3) {
 .menu-icon {
   display: none;
 }
+.fa-bars:hover {
+  color: #adce0d;
+}
+.fa-times:hover {
+  color: #adce0d;
+}
+/* .fa-bars::before{
+  margin-bottom: 50px;
+} */
 
 @media screen and (max-width: 960px) {
   .NavbarItems {
@@ -194,7 +203,7 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3) {
   }
 
   .nav-menu.active {
-    background: #1F2F7D;
+    background: #1f2f7d;
     left: 0;
     top: 70px;
     opacity: 1;
@@ -212,18 +221,18 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3) {
 
   .nav-links:hover {
     /* background-color: rgb(158, 46, 46); */
-    color: rgb(24,155,234);
+    color: rgb(24, 155, 234);
     border-radius: 0;
     /* padding: 0; */
     /* width: 50px; */
   }
 
-  .navbar-logo { 
+  .navbar-logo {
     position: absolute;
     top: 15px;
-    left: 10px; 
+    left: 10px;
     /* transform: translate(25%, 50%);  */
-   }
+  }
 
   .menu-icon {
     display: block;
@@ -260,15 +269,21 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3) {
     transition: 250ms;
   }
 }
-.gi:hover{
-color: #ADCE0D;
+.gi:hover {
+  color: #adce0d;
 }
 .gi {
-  
   position: absolute;
   right: 20px;
   top: 25px;
   color: #ffffff;
+}
+
+.coloruser {
+  font-size: 40px;
+  color: rgb(238, 238, 238);
+  margin-left: 10px;
+  cursor: pointer;
 }
 /* :root {
   --nav-width: 75px;
