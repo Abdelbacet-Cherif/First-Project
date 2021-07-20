@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "./actions/authActions";
-import { Button } from "././pages/Button";
-import { GiHamburgerMenu } from "react-icons/gi";
-import "./Navbar.css";
-import "./App.css";
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logoutUser } from './actions/authActions'
+import { Button } from '././pages/Button'
+// import { GiHamburgerMenu } from 'react-icons/gi'
+import './Navbar.css'
+import './App.css'
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(false);
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+  const [click, setClick] = useState(false)
+  const [button, setButton] = useState(false)
+  const handleClick = () => setClick(!click)
+  const closeMobileMenu = () => setClick(false)
   const showButton = () => {
     if (window.innerWidth <= 960) {
-      setButton(true);
+      setButton(true)
     } else {
-      setButton(false);
+      setButton(false)
     }
-  };
+  }
   useEffect(() => {
-    showButton();
-  }, []);
+    showButton()
+  }, [])
 
-  window.addEventListener("resize", showButton);
+  window.addEventListener('resize', showButton)
   return (
     <div>
       {/* <nav>
@@ -65,7 +65,7 @@ const Navbar = () => {
             />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
-            <i  className={click ? "fas fa-times" : "fas fa-bars"} />
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
             {/* <GiHamburgerMenu className="gi" /> */}
             {/* <label for="check">
               <input type="checkbox" className="check" />
@@ -77,7 +77,7 @@ const Navbar = () => {
 
           {auth.isAuth ? (
             <div>
-              <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className="nav-item">
                   <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                     Accueil
@@ -102,27 +102,24 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  
-                    <Link
-                      className="nav-links1"
-                      onClick={closeMobileMenu}
-                      onClick={() => dispatch(logoutUser())}
-                    ><Button  >
-                      Déconnexion</Button>
-                    </Link>
-                  
+                  <Link
+                    className="nav-links1"
+                    onClick={closeMobileMenu}
+                    onClick={() => dispatch(logoutUser())}
+                  >
+                    <Button>Déconnexion</Button>
+                  </Link>
                 </li>
                 <li className="nav-item ">
-               <Link to="/profile" onClick={closeMobileMenu} >
-                <i  class="fas fa-user-circle coloruser" ></i>
-                </Link>
-                 
+                  <Link to="/profile" onClick={closeMobileMenu}>
+                    <i class="fas fa-user-circle coloruser"></i>
+                  </Link>
                 </li>
               </ul>
             </div>
           ) : (
             <div>
-              <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className="nav-item">
                   <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                     Accueil
@@ -141,17 +138,19 @@ const Navbar = () => {
                 }
 
                 <li className="nav-item ">
-                  <Link to="/register"  onClick={closeMobileMenu}>
-                    <Button className="btn btnfont1 " buttonStyle="btn--outline">
+                  <Link to="/register" onClick={closeMobileMenu}>
+                    <Button
+                      className="btn btnfont1 "
+                      buttonStyle="btn--outline"
+                    >
                       Déposer une annonce
                     </Button>
                   </Link>
                 </li>
                 <li className="nav-item ">
-               <Link to="/register" onClick={closeMobileMenu} >
-                <i  class="fas fa-user-circle coloruser" ></i>
-                </Link>
-                 
+                  <Link to="/register" onClick={closeMobileMenu}>
+                    <i class="fas fa-user-circle coloruser"></i>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -159,7 +158,7 @@ const Navbar = () => {
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

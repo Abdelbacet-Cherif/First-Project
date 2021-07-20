@@ -20,6 +20,7 @@
 }
 .colorcategory {
   background-color: rgb(23, 165, 244);
+ 
 }
 .colorcategory:hover {
   background-color: rgb(31, 47, 125);
@@ -56,7 +57,11 @@
   background-color: #1f2f7d;
 }
 .categoname {
+ margin-top: -3%;
+ margin-left: 0.71%;
   text-align: center;
+  font-family: "Leckerli One", sans-serif;
+
 }
 .categoname:hover {
   color: rgb(255, 255, 255);

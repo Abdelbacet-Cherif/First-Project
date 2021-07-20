@@ -1,0 +1,44 @@
+.ffle {
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  flex: 50%;
+  padding: 10px;
+  margin: 5%;
+  margin-right: 2% !important;
+}
+.column1 {
+  flex: 50%;
+  /* padding: 10px; */
+  margin-top: 5%;
+}
+
+.photo {
+  width: 100% !important;
+  height: 400px !important;
+}
+.pro {
+  margin-top: 5%;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 0%;
+}
+.pro1 {
+  font-size: 19px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.pr {
+  font-family: 'Damion', cursive ;
+  font-size: 40px;
+}
+
+.ci {
+  color: #666666;
+  font-size: 18px;
+}
+.ci0 {
+  color: #666666;
+  font-size: 16px;
+}

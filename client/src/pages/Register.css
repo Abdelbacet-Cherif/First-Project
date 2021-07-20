@@ -21,6 +21,8 @@
   background-color: RGB(239, 239, 239);
   margin: auto;
   width: 70%;
+  margin-bottom: 4% !important;
+
 }
 .espace {
   margin-top: 4%;

@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { updateProfile } from "../actions/authActions";
-import "../css/Profile.css";
+import React, { useState } from 'react'
+import { Button, Form, Modal } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { updateProfile } from '../actions/authActions'
+import '../css/Profile.css'
 
 const EditProfile = ({ user }) => {
-  const [input, setInput] = useState(user);
-  const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [input, setInput] = useState(user)
+  const [show, setShow] = useState(false)
+  const dispatch = useDispatch()
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   const handleChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
+    setInput({ ...input, [e.target.name]: e.target.value })
+  }
   const handleSave = () => {
-    dispatch(updateProfile(input));
-    handleClose();
-  };
+    dispatch(updateProfile(input))
+    handleClose()
+  }
   return (
     <div>
       <button className="buttonprofile" onClick={handleShow}>
@@ -80,7 +80,7 @@ const EditProfile = ({ user }) => {
         </Modal.Footer>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default EditProfile;
+export default EditProfile

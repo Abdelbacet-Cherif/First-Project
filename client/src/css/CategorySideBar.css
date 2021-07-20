@@ -1,0 +1,20 @@
+.lin {
+  color: white;
+  text-decoration: none;
+}
+.lin:hover {
+  color: white;
+}
+.nav01 {
+  height: 0%;
+  margin-top: 2.5%;
+  width: 85%;
+  background-color: #1f2f7d !important;
+}
+.nav01:hover {
+  background-color: #adce0d !important;
+}
+
+/* .flex-column{
+    background-color: blue;
+} */

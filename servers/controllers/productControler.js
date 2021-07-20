@@ -53,7 +53,7 @@ const getProductsByGroup = async (req, res) => {
     // let start=req.header('start')
     const [catId, start] = req.params.query.split("-");
     const product = await Post.find({ category: catId }).populate("owner");
-    let finalProduct = product.filter((el, i) => i >= +start && i < +start + 3);
+    let finalProduct = product.filter((el, i) => i >= +start && i < +start + 12);
     console.log(start)
     console.log(finalProduct.length)
     res.json(finalProduct);
@@ -103,4 +103,5 @@ module.exports = {
   updateAllProducts,
   deleteProduct,
   getProductsByGroup,
+  getMyPosts,
 };

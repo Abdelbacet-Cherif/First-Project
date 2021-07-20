@@ -1,0 +1,13 @@
+.sear {
+  line-height: 1.42857143;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px !important;
+  box-shadow: inset 0 1px 0px #aaa !important;
+  margin-top: 18%;
+  width: 60%;
+}
+.sear:focus {
+  border-color: rgb(94, 91, 253);
+  box-shadow: none !important;
+}

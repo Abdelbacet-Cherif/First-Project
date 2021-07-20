@@ -17,62 +17,68 @@
 
 // export default Feed;
 
-import React, { useEffect, useRef, useState } from "react";
-import { loadUser } from "../actions/authActions";
-import { getAllCategorie } from "../actions/categorieActions";
-import { useDispatch, useSelector } from "react-redux";
-import { Form, FormControl } from "react-bootstrap";
-import FeedCard from "./HomeCard";
-import { createProduct } from "../actions/productActions";
-import "./Feed.css";
-import ListVilleDropdown from "../components/ListVilleDropdown";
+import React, { useEffect, useRef, useState } from 'react'
+import { loadUser } from '../actions/authActions'
+import { getAllCategorie } from '../actions/categorieActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { Form, FormControl, ListGroup } from 'react-bootstrap'
+import FeedCard from './HomeCard'
+import { createProduct } from '../actions/productActions'
+import './Feed.css'
+import ListVilleDropdown from '../components/ListVilleDropdown'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer, toast } from 'react-toastify'
 const Feed = ({ history }) => {
-  const title = useRef();
+  const notify = () => {
+    toast.success('Votre annonces bien poster', { autoClose: false })
+  }
+
+  const title = useRef()
   const [data, setData] = useState({
-    title: "",
-    price: "",
-    gender: "",
-    city: "",
+    title: '',
+    price: '',
+    gender: '',
+    city: '',
     image: null,
-    category: "",
-    description: "",
-  });
-  const [valideForm, setvalideForm] = useState(false);
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  const { categories } = useSelector((state) => state.categories);
+    category: '',
+    description: '',
+  })
+  const [valideForm, setvalideForm] = useState(false)
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+  const { categories } = useSelector((state) => state.categories)
   useEffect(() => {
-    dispatch(loadUser());
-    dispatch(getAllCategorie());
-  }, []);
+    dispatch(loadUser())
+    dispatch(getAllCategorie())
+  }, [])
   useEffect(() => {
-    if (auth.isAuth === false) history.push("/");
-  }, [auth.isAuth]);
+    if (auth.isAuth === false) history.push('/')
+  }, [auth.isAuth])
   const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    setData({ ...data, [e.target.name]: e.target.value })
     // validation();
-  };
+  }
 
   const handleImage = (e) => {
-    setData({ ...data, image: e.target.files });
+    setData({ ...data, image: e.target.files })
     // validation();
-  };
+  }
   const handleVilleSearch = (value) => {
-    setData({ ...data, city: value });
-  };
+    setData({ ...data, city: value })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    const keys = Object.keys(data);
-    let filesArray = Object.values(data.image);
+    e.preventDefault()
+    const formData = new FormData()
+    const keys = Object.keys(data)
+    let filesArray = Object.values(data.image)
     // formData.append("image", filesArray);
-    filesArray.map((file) => formData.append("image", file));
-    keys.map((el) => formData.append(el, data[el]));
+    filesArray.map((file) => formData.append('image', file))
+    keys.map((el) => formData.append(el, data[el]))
 
-    dispatch(createProduct(formData));
-    history.push("/profile");
-  };
+    dispatch(createProduct(formData))
+    history.push('/profile')
+  }
   // const validation = () => {
   //   title.current.value !== "" ? setvalideForm(true) : setvalideForm(false);
   // };
@@ -117,7 +123,7 @@ const Feed = ({ history }) => {
           <label className="label">Télephone *</label>
           <FormControl
             required
-            className="inputtunis"
+            className="input"
             name="phone"
             onChange={handleChange}
           />
@@ -150,28 +156,29 @@ const Feed = ({ history }) => {
           {/* <Form.Control as="select">
     <option>Default select</option>
   </Form.Control> */}
-            <label className="label">Choisir votre annonces*</label>
+          <label className="label">Choisir votre annonces*</label>
 
-  <Form.Group className="ds">
-          <Form.Control
-            className="inputtunis1"
-            // htmlFor="grouped-native-select"
-            // id="grouped-native-select"
-            as="select"
-            // className="my-1 mr-sm-2"
-            // id="inlineFormCustomSelectPref"
-            onChange={handleChange}
-            name="category"
-            // custom
-            required
-          >
-            
-            <option value="0">Choisir...</option>
-            {categories &&
-              categories.map((el) => <option value={el._id}>{el.name}</option>)}
-          </Form.Control>
+          <Form.Group className="ds">
+            <ListGroup.Item
+              className="inputtunis1"
+              // htmlFor="grouped-native-select"
+              // id="grouped-native-select"
+              as="select"
+              // className="my-1 mr-sm-2"
+              // id="inlineFormCustomSelectPref"
+              onChange={handleChange}
+              name="category"
+              // custom
+              required
+            >
+              <option value="0">Choisir...</option>
+              {categories &&
+                categories.map((el) => (
+                  <option value={el._id}>{el.name}</option>
+                ))}
+            </ListGroup.Item>
 
-          {/* <select
+            {/* <select
             defaultValue="choisir"
             onChange={handleChange}
             name="category"
@@ -179,7 +186,7 @@ const Feed = ({ history }) => {
             {categories &&
               categories.map((el) => <option value={el._id}>{el.name}</option>)}
           </select> */}
-          {/* <Form.Control
+            {/* <Form.Control
             as="select"
             className="mr-sm-2"
             id="inlineFormCustomSelect"
@@ -191,8 +198,8 @@ const Feed = ({ history }) => {
             {categories &&
               categories.map((el) => <option value={el._id}>{el.name}</option>)}
           </Form.Control> */}
-          {/* <Form className="label">Photos de votre annonce *</Form> */}
-          {/* <Form.File
+            {/* <Form className="label">Photos de votre annonce *</Form> */}
+            {/* <Form.File
             className="position-relative"
             required
             name="file"
@@ -200,28 +207,33 @@ const Feed = ({ history }) => {
             onChange={handleImage}
             multiple
           /> */}
-          <Form.File
-            className="position1"
-            required
-            onChange={handleImage}
-            // id="validationFormik107"
-            feedbackTooltip
-            multiple
-          />
+            <Form.File
+              className="position1"
+              required
+              onChange={handleImage}
+              // id="validationFormik107"
+              feedbackTooltip
+              multiple
+            />
           </Form.Group>
           <input
             // disabled={!valideForm}
             className="btn btn-md btn-secondary"
             type="submit"
             value="Ajouter votre annonce"
+            onClick={() => {
+              notify()
+            }}
           />
+          <ToastContainer />
+
           {/* <h4 style={{ visibility: valideForm ? "hidden" : "visible" }}>
             veuillhghhhg yyggyhg
           </h4> */}
         </Form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Feed;
+export default Feed

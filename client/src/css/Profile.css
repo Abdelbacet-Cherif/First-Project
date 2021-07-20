@@ -135,9 +135,12 @@
   margin-top: 1rem;
 }
 .lower-container1 p {
-  text-align: justify;
+  text-align: initial;
   margin: 0;
   padding: 0;
+  word-wrap: break-word;
+  font-family: 'Damion', cursive;
+  font-size: 20px;
 }
 
 .buttonup {
@@ -171,4 +174,8 @@
   transform: scale(1.2);
   border: none;
   color: white;
+}
+
+.ca {
+  height: auto !important;
 }

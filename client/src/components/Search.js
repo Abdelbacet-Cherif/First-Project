@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import ListVille from "./ListVilleDropdown";
-
+import React, { useState } from 'react'
+import { Form } from 'react-bootstrap'
+import ListVille from './ListVilleDropdown'
+import "../css/Search.css"
 const Search = ({ handleSearchChange, handleVilleSearch }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('')
   const handleChange = (e) => {
-    setInput(e.target.value);
-    handleSearchChange(e.target.value);
-  };
+    setInput(e.target.value)
+    handleSearchChange(e.target.value)
+  }
   return (
     <div>
+      <Form.Control className="sear"  placeholder="Rechercher"  value={input} onChange={handleChange}></Form.Control>
       <ListVille handleVilleSearch={handleVilleSearch}></ListVille>
-      <input type="search" value={input} onChange={handleChange}></input>
     </div>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search

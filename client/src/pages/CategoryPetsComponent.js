@@ -1,16 +1,16 @@
-import React from "react";
-import "./CategoryPets.css";
-import { Carousel } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { deletes, update } from "../actions/productActions";
-import EditPost from "../components/EditPost";
+import React from 'react'
+import './CategoryPets.css'
+import { Carousel } from 'react-bootstrap'
+import { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { deletes, update } from '../actions/productActions'
+// import EditPost from "../components/EditPost";
 // import CardDesign from "../components/CardDesign";
 const CategoryPetsComponent = ({ el, catId }) => {
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  const [show, setShow] = useState(false);
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+  const [show, setShow] = useState(false)
   const [input, setinput] = useState({
     title: el.title,
     gender: el.gender,
@@ -19,50 +19,66 @@ const CategoryPetsComponent = ({ el, catId }) => {
     description: el.description,
     phone: el.phone,
     image: el.image,
-  });
+  })
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0)
 
   //functions ============
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   const handleChange = (e) => {
-    setinput({ ...input, [e.target.name]: e.target.value });
-  };
+    setinput({ ...input, [e.target.name]: e.target.value })
+  }
 
   const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
+    setIndex(selectedIndex)
+  }
 
   const handleDelete = () => {
-    dispatch(deletes(el._id, catId));
-  };
+    dispatch(deletes(el._id, catId))
+  }
 
   return (
     <div>
-      <div style={{ width: "150px" }}>
-        <Carousel
-          style={{ height: "140px" }}
-          activeIndex={index}
-          onSelect={handleSelect}
-        >
-          {el.image &&
-            el.image.map((img) => (
-              <Carousel.Item>
-                <img className="d-block w-100" src={img} alt="First slide" />
-              </Carousel.Item>
-            ))}
-        </Carousel>
-        <Link to={`/details/${el._id}`}>détails...</Link>
-        {/* <img
+      <div className="catcard">
+        <div style={{ width: '150px' }}>
+          <div className="upper-container2">
+            <Carousel
+              style={{ height: '140px' }}
+              activeIndex={index}
+              onSelect={handleSelect}
+            >
+              {el.image &&
+                el.image.map((img) => (
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100 upper-container2"
+                      src={img}
+                      alt="First slide"
+                    />
+                  </Carousel.Item>
+                ))}
+            </Carousel>
+          </div>
+          <div className="lower-container01">
+            {/* <img
           src={process.env.REACT_APP_STORAGE_URL + el.image[0]}
           width="150"
         /> */}
-        <p>
-          <strong>Titre: </strong>
-          {el.title}
-        </p>
-        <p>
+            <p className="pp1">
+              {/* <strong>Titre: </strong> */}
+              {el.title}
+            </p>
+            <p className="pp">
+              {/* <strong>Prix: </strong> */}
+              {el.price}
+            </p>
+            <Link className="buto" to={`/details/${el._id}`}>
+              Détails
+            </Link>
+          </div>
+        </div>
+            {/* <p>
           <strong>Genre: </strong>
           {el.gender}
         </p>
@@ -70,19 +86,16 @@ const CategoryPetsComponent = ({ el, catId }) => {
           {" "}
           <strong>Ville: </strong>
           {el.city}
-        </p>
-        <p>
-          <strong>Prix: </strong>
-          {el.price}
-        </p>
-        <p>
+        </p> */}
+         
+        {/* <p>
           <strong>Description: </strong>
           {el.description}
         </p>
         <span>
           <strong>Téléphone: </strong>
           {el.phone}
-        </span>
+        </span> */}
         {/* modal */}
         {/* {auth.user && auth.user._id === el.owner._id && (
           <>
@@ -181,7 +194,7 @@ const CategoryPetsComponent = ({ el, catId }) => {
         {/* <EditPost el={el} catId={catId} /> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryPetsComponent;
+export default CategoryPetsComponent

@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
-import { Button, Card, Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import "../css/HomeCard.css";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import React, { useEffect } from 'react'
+import { Card, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import '../css/HomeCard.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
-    
 const HomeCard = ({ categorie, color }) => {
-  useEffect(()=> {
-    AOS.init({duration:2000});
-  },[])
+  useEffect(() => {
+    AOS.init({ duration: 2000 })
+  }, [])
   // console.log("cat========>", categorie);
   return (
     <div className="all" data-aos="zoom-in-up">
@@ -20,7 +19,7 @@ const HomeCard = ({ categorie, color }) => {
           </Link>
 
           <Card.Body
-            style={{ backgroundColor: color  }}
+            style={{ backgroundColor: color }}
             className="colorcategory"
           >
             {/* <Card.Title style={{ width: "80px", margin: "10px 100px 5px" }}>
@@ -42,7 +41,7 @@ const HomeCard = ({ categorie, color }) => {
         </Card.Body>
       </Card> */}
     </div>
-  );
-};
+  )
+}
 
-export default HomeCard;
+export default HomeCard
