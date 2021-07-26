@@ -16,9 +16,12 @@
 }
 
 .photo {
-  width: 100% !important;
+  max-width: 100% !important;
   height: 400px !important;
 }
+/* .photo1 {
+  object-fit: cover;
+} */
 .pro {
   margin-top: 5%;
   font-family: 'Raleway', sans-serif;
@@ -30,7 +33,7 @@
 }
 
 .pr {
-  font-family: 'Damion', cursive ;
+  font-family: 'Damion', cursive;
   font-size: 40px;
 }
 

@@ -21,7 +21,7 @@ const Home = () => {
   }, [dispatch])
   useEffect(() => {
     if (auth.isAuth === false) history.push('/')
-  }, [auth.isAuth])
+  }, [auth.isAuth]) //[auth.isAuth]
   const randomColor = ['#17A5F4', '#A8C80D', '#F7470C']
   return (
     <div>
@@ -155,16 +155,26 @@ const Home = () => {
         </p>
       </div>
       <div className="ban">
-      <img data-aos="fade-down-right" className="ban1" src="./images/banner1.jpg" />
-      <img data-aos="fade-down-left" className="ban2" src="./images/banner2.jpg" />
+        <img
+          alt="f"
+          data-aos="fade-down-right"
+          className="ban1"
+          src="./images/banner1.jpg"
+        />
+        <img
+          alt="f"
+          data-aos="fade-down-left"
+          className="ban2"
+          src="./images/banner2.jpg"
+        />
       </div>
       {/* <img src="./images/pet.png" className="pet"/> */}
-      <img src="./images/dogf.jpg" className="pe" />
-      <img src="./images/catf.jpg" className="pe" />
-      <img src="./images/dogf0.png" className="pe" />
-      <img src="./images/dogf1.jpg" className="pe" />
-      <img src="./images/dogf2.jpg" className="pe" />
-      <img src="./images/birdf.jpg" className="pe" />
+      <img alt="f" src="./images/dogf.jpg" className="pe" />
+      <img alt="f" src="./images/catf.jpg" className="pe" />
+      <img alt="f" src="./images/dogf0.png" className="pe" />
+      <img alt="f" src="./images/dogf1.jpg" className="pe" />
+      <img alt="f" src="./images/dogf2.jpg" className="pe" />
+      <img alt="f" src="./images/birdf.jpg" className="pe" />
     </div>
   )
 }

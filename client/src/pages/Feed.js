@@ -29,9 +29,9 @@ import ListVilleDropdown from '../components/ListVilleDropdown'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer, toast } from 'react-toastify'
 const Feed = ({ history }) => {
-  const notify = () => {
-    toast.success('Votre annonces bien poster', { autoClose: false })
-  }
+  // const notify = () => {
+  //   toast.success('Votre annonces bien poster', { autoClose: false })
+  // }
 
   const title = useRef()
   const [data, setData] = useState({
@@ -79,6 +79,21 @@ const Feed = ({ history }) => {
     dispatch(createProduct(formData))
     history.push('/profile')
   }
+  const handleAdd = (e) => {
+    if (
+      data.title &&
+      data.price &&
+      data.gender &&
+      data.city &&
+      data.image &&
+      data.category
+    ) {
+      const conf = window.confirm('Votre annonces bien poster ')
+      if (conf) {
+        handleSubmit(e)
+      }
+    }
+  }
   // const validation = () => {
   //   title.current.value !== "" ? setvalideForm(true) : setvalideForm(false);
   // };
@@ -116,6 +131,7 @@ const Feed = ({ history }) => {
           {/* <Form className="label">Ville *</Form>
           <FormControl required className="input" name="city" onChange={handleChange} /> */}
           <ListVilleDropdown
+            required
             defaults={true}
             handleVilleSearch={handleVilleSearch}
           />
@@ -168,10 +184,12 @@ const Feed = ({ history }) => {
               // id="inlineFormCustomSelectPref"
               onChange={handleChange}
               name="category"
-              // custom
+              custom
               required
             >
-              <option value="0">Choisir...</option>
+              <option value="0 " required>
+                Choisir...
+              </option>
               {categories &&
                 categories.map((el) => (
                   <option value={el._id}>{el.name}</option>
@@ -221,11 +239,16 @@ const Feed = ({ history }) => {
             className="btn btn-md btn-secondary"
             type="submit"
             value="Ajouter votre annonce"
-            onClick={() => {
-              notify()
+            // onClick={() => {
+            //   notify()
+            // }}
+            onClick={(e) => {
+              // notify()
+              // handleShows()
+              handleAdd(e)
             }}
           />
-          <ToastContainer />
+          {/* <ToastContainer /> */}
 
           {/* <h4 style={{ visibility: valideForm ? "hidden" : "visible" }}>
             veuillhghhhg yyggyhg

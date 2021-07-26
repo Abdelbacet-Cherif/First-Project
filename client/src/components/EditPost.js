@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { Alert, Button, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { deletes, update } from "../actions/productActions";
-import "../css/Profile.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import React, { useState } from 'react'
+import { Alert, Button, Modal, Toast } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { deletes, update } from '../actions/productActions'
+import '../css/Profile.css'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const EditPost = ({ el, catId }) => {
-  const notify = () => {toast.error("Votre poste était effacé",{autoClose:false})};
-  const auth = useSelector((state) => state.auth);
+  // const notify = () => {
+  //   toast.error('Votre poste était effacé', { autoClose: 2500 })
+  // }
+  const auth = useSelector((state) => state.auth)
   const [input, setinput] = useState({
     title: el.title,
     gender: el.gender,
@@ -18,40 +19,54 @@ const EditPost = ({ el, catId }) => {
     description: el.description,
     phone: el.phone,
     image: el.image,
-  });
-  const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  })
+  const dispatch = useDispatch()
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const handleChange = (e) => {
-    setinput({ ...input, [e.target.name]: e.target.value });
-  };
+    setinput({ ...input, [e.target.name]: e.target.value })
+  }
   const handleDelete = () => {
-    dispatch(deletes(el._id, catId));
-  };
+    const conf = window.confirm('confirmer la suppression? ')
+    if (conf) {
+      dispatch(deletes(el._id, catId))
+    }
+  }
   const handleSave = () => {
-    dispatch(update(el._id, input, catId));
-    handleClose();
-  };
+    dispatch(update(el._id, input, catId))
+    handleClose()
+  }
+
+  // const [shows, setshows] = useState(false)
+  // const handleShows = () => setshows(!shows)
 
   return (
     <div>
       {auth.user && auth.user._id === (el.owner._id || el.owner) && (
         <>
-          <button className="buttonup"  onClick={handleShow}>
+          <button className="buttonup" onClick={handleShow}>
             modifier
           </button>
           <button
             className="buttonsup"
             onClick={() => {
-              notify();
-              handleDelete();
+              // notify()
+              // handleShows()
+              handleDelete()
             }}
           >
             Effacer
           </button>
-          <ToastContainer />
+          {/* <ToastContainer limit={0} /> */}
+          {/* <Toast show ={shows}>
+            <Toast.Header> */}
+          {/* <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" /> */}
+          {/* <strong className="me-auto">Bootstrap</strong>
+            </Toast.Header>
+            <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
+          </Toast> */}
         </>
       )}
       <Modal show={show} onHide={handleClose}>
@@ -84,7 +99,7 @@ const EditPost = ({ el, catId }) => {
             ></input>
           </div>
           <div className="flex">
-            {" "}
+            {' '}
             <label className="flex1">Ville:</label>
             <input
               className="flex2"
@@ -94,7 +109,7 @@ const EditPost = ({ el, catId }) => {
             ></input>
           </div>
           <div className="flex">
-            {" "}
+            {' '}
             <label className="flex1">Prix:</label>
             <input
               className="flex2"
@@ -104,7 +119,7 @@ const EditPost = ({ el, catId }) => {
             ></input>
           </div>
           <div className="flex">
-            {" "}
+            {' '}
             <label className="flex1">Description:</label>
             <input
               className="flex2"
@@ -130,7 +145,7 @@ const EditPost = ({ el, catId }) => {
         </Modal.Footer>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default EditPost;
+export default EditPost

@@ -11,11 +11,15 @@ import CategoryPets from './pages/CategoryPets'
 import Profile from './pages/Profile'
 import DetailsPost from './pages/DetailsPost'
 import Footer from './Footer'
+import ScrollToTop from './components/ScrollToTop'
+import Scroll from './components/Scroll'
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Scroll showBelow={250} />
+        <ScrollToTop />
         <Navbar />
 
         <Switch>
@@ -26,10 +30,8 @@ function App() {
           <Route path="/category/:id" component={CategoryPets} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <Route path="/details/:id" component={DetailsPost} />
-          
         </Switch>
-      <Footer />
-
+        <Footer />
       </Router>
     </div>
   )

@@ -1,42 +1,43 @@
 import React from 'react'
 import './CategoryPets.css'
 import { Carousel } from 'react-bootstrap'
-import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { deletes, update } from '../actions/productActions'
+import { useState } from 'react'
+import {  Link, useLocation } from 'react-router-dom'
+import { useDispatch} from 'react-redux'
+// import { deletes, getProducts, update } from '../actions/productActions'
 // import EditPost from "../components/EditPost";
 // import CardDesign from "../components/CardDesign";
 const CategoryPetsComponent = ({ el, catId }) => {
   const dispatch = useDispatch()
-  const auth = useSelector((state) => state.auth)
-  const [show, setShow] = useState(false)
-  const [input, setinput] = useState({
-    title: el.title,
-    gender: el.gender,
-    city: el.city,
-    price: el.price,
-    description: el.description,
-    phone: el.phone,
-    image: el.image,
-  })
-
+  // const auth = useSelector((state) => state.auth)
+  // const [show, setShow] = useState(false)
+  // const [input, setinput] = useState({
+  //   title: el.title,
+  //   gender: el.gender,
+  //   city: el.city,
+  //   price: el.price,
+  //   description: el.description,
+  //   phone: el.phone,
+  //   image: el.image,
+  // })
+  const location = useLocation()
   const [index, setIndex] = useState(0)
+  /*  */
 
   //functions ============
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
-  const handleChange = (e) => {
-    setinput({ ...input, [e.target.name]: e.target.value })
-  }
+  // const handleClose = () => setShow(false)
+  // const handleShow = () => setShow(true)
+  // const handleChange = (e) => {
+  //   setinput({ ...input, [e.target.name]: e.target.value })
+  // }
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
 
-  const handleDelete = () => {
-    dispatch(deletes(el._id, catId))
-  }
+  // const handleDelete = () => {
+  //   dispatch(deletes(el._id, catId))
+  // }
 
   return (
     <div>
@@ -73,12 +74,15 @@ const CategoryPetsComponent = ({ el, catId }) => {
               {/* <strong>Prix: </strong> */}
               {el.price}
             </p>
-            <Link className="buto" to={`/details/${el._id}`}>
+            <Link
+              className="buto"
+              to={{ pathname: `/details/${el._id}`, state: catId }}
+            >
               Détails
             </Link>
           </div>
         </div>
-            {/* <p>
+        {/* <p>
           <strong>Genre: </strong>
           {el.gender}
         </p>
@@ -87,7 +91,7 @@ const CategoryPetsComponent = ({ el, catId }) => {
           <strong>Ville: </strong>
           {el.city}
         </p> */}
-         
+
         {/* <p>
           <strong>Description: </strong>
           {el.description}

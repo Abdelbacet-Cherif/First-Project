@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Carousel } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
+import { getProducts } from '../actions/productActions'
 import '../css/DetailsPost.css'
 
 const DetailsPost = ({ match, el }) => {
   const [product, setProduct] = useState(null)
+  const location = useLocation()
+  const dispatch = useDispatch()
   const products = useSelector((state) => state.productReducer.products)
   useEffect(() => {
     setProduct(products.find((el) => el._id == match.params.id))
-  }, [])
+  }, [products])
+  useEffect(() => {
+    dispatch(getProducts(location.state))
+  }, [dispatch])
 
   return (
     <div>
@@ -33,8 +40,12 @@ const DetailsPost = ({ match, el }) => {
           </Carousel>
           {product && <p className="ci0">Publié: {product.created_at}</p>}
 
-          <p className="pro">Déscription :</p>
-          {product && <p className="pro1"> {product.description}</p>}
+          {product && (
+            <>
+              <p className="pro">Déscription :</p>{' '}
+              <p className="pro1"> {product.description}</p>
+            </>
+          )}
         </div>
         {/* {product && product.map((img) => < img   src={img}  />)} */}
         <div className="column1">
